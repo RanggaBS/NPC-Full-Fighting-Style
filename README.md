@@ -1,2 +1,2 @@
 # NPC-Full-Fighting-Style
-This is description.
+A mod that changes the fighting style of NPCs to as it should be.
