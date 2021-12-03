@@ -39,11 +39,6 @@ function T_NPC_Full_Fighting_Style()
 		for doi, ped in {PedFindInAreaXYZ(0, 0, 0, 999)} do
 			if PedIsValid(ped) and ped ~= gPlayer then
 
-				if PedIsFemale(ped) and not PedIsModel(ped, 39) then
-					PedSetFlag(ped, 84, true)
-					PedSetEmotionTowardsPed(ped, gPlayer, 8)
-				end
-
 				-- Russell:
 				if PedIsModel(ped, 75) or PedIsModel(ped, 176) then
 					if not MissionActiveSpecific("1_B") then
