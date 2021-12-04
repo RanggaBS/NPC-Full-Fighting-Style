@@ -8,8 +8,8 @@ local garyBricksThrow = true
 local darbyBottlesThrow = true
 local tedWftbombsThrow = true
 
-local nortonHP;
-local fattyHP;
+--local nortonHP;
+--local fattyHP;
 
 function LoadAnims()
 	local animGroup, actionTree = {
@@ -85,6 +85,15 @@ function T_NPC_Full_Fighting_Style()
 						if PedIsInCombat(ped) then
 							if PedMePlaying(ped, "Default_KEY") and not PedIsDoingTask(ped, "/Global/DarbyAI", true) then
 								PedSetAITree(ped, "/Global/DarbyAI", "Act/AI/AI_DARBY_2_B.act")
+							end
+							if DistanceBetweenPeds2D(ped, PedGetTargetPed(ped)) < 3 and PedMePlaying(ped, "Default_KEY") and math.random(450) < 4 then
+								local darbyNodes, darbyNodes_rand = {
+									{"/Global/BOSS_Darby/Offense/Special/Dash/Dash/Uppercut/ShortDarby", "Act/Anim/BOSS_Darby.act"},
+									{"/Global/BOSS_Darby/Defense/Evade/EvadeDuck/HeavyAttacks/EvadeDuckPunch", "Act/Anim/BOSS_Darby.act"},
+									{"/Global/BOSS_Darby/Defense/Evade/EvadeLeft/HeavyAttacks/EvadeRightPunch", "Act/Anim/BOSS_Darby.act"},
+									{"/Global/BOSS_Darby/Defense/Evade/EvadeRight/HeavyAttacks/EvadeLeftPunch", "Act/Anim/BOSS_Darby.act"}
+								}, math.random(4)
+								PedSetActionNode(ped, darbyNodes[darbyNodes_rand][1], darbyNodes[darbyNodes_rand][2])
 							end
 							if darbyBottlesThrow and DistanceBetweenPeds2D(ped, PedGetTargetPed(ped)) >= 3 and PedMePlaying(ped, "Default_KEY") and math.random(500) <= 5 then
 								PedSetActionNode(ped, "/Global/BOSS_Darby/Special/Throw", "Act/Anim/BOSS_Darby.act")
@@ -199,9 +208,9 @@ function T_NPC_Full_Fighting_Style()
 						if PedIsInCombat(ped) then
 							if PedHasWeapon(ped, 324) then
 								if PedMePlaying(ped, "Default_KEY") and not PedIsPlaying(ped, "/Global/Norton", true) and not PedIsDoingTask(ped, "/Global/NortonAI", true) then
-									nortonHP = PedGetHealth(ped)
-									PedSetStatsType(ped, "STAT_3_05_NORTON")
-									PedSetHealth(ped, nortonHP)
+									--nortonHP = PedGetHealth(ped)
+									--PedSetStatsType(ped, "STAT_3_05_NORTON")
+									--PedSetHealth(ped, nortonHP)
 									PedSetActionTree(ped, "/Global/Norton", "Act/Anim/3_05_Norton.act")
 									PedSetAITree(ped, "/Global/NortonAI", "Act/AI/AI_Norton.act")
 								end
@@ -212,9 +221,9 @@ function T_NPC_Full_Fighting_Style()
 							else
 								if PedMePlaying(ped, "Default_KEY") then
 									if not PedIsPlaying(ped, "/Global/G_Grappler_A", true) and not PedIsDoingTask(ped, "/Global/AI", true) and PedHasWeapon(ped, -1) then
-										nortonHP = PedGetHealth(ped)
-										PedSetStatsType(ped, "STAT_G_GRAPPLER_A")
-										PedSetHealth(ped, nortonHP)
+										--nortonHP = PedGetHealth(ped)
+										--PedSetStatsType(ped, "STAT_G_GRAPPLER_A")
+										--PedSetHealth(ped, nortonHP)
 										PedSetActionTree(ped, "/Global/G_Grappler_A", "Act/Anim/G_Grappler_A.act")
 										PedSetAITree(ped, "/Global/AI", "Act/AI/AI.act")
 									end
@@ -225,9 +234,9 @@ function T_NPC_Full_Fighting_Style()
 							end
 						else
 							if PedMePlaying(ped, "Default_KEY") and not PedIsPlaying(ped, "/Global/G_Grappler_A", true) and not PedIsDoingTask(ped, "/Global/AI", true) and PedHasWeapon(ped, -1) then
-								nortonHP = PedGetHealth(ped)
-								PedSetStatsType(ped, "STAT_G_GRAPPLER_A")
-								PedSetHealth(ped, nortonHP)
+								--nortonHP = PedGetHealth(ped)
+								--PedSetStatsType(ped, "STAT_G_GRAPPLER_A")
+								--PedSetHealth(ped, nortonHP)
 								PedSetActionTree(ped, "/Global/G_Grappler_A", "Act/Anim/G_Grappler_A.act")
 								PedSetAITree(ped, "/Global/AI", "Act/AI/AI.act")
 							end
@@ -429,24 +438,24 @@ function T_NPC_Full_Fighting_Style()
 						if PedIsInCombat(ped) then
 							if DistanceBetweenPeds2D(ped, PedGetTargetPed(ped)) <= 3 then
 								if PedMePlaying(ped, "Default_KEY") and not PedIsPlaying(ped, "/Global/J_Grappler_A", true) and PedHasWeapon(ped, -1) then
-									fattyHP = PedGetHealth(ped)
-									PedSetStatsType(ped, "STAT_J_GRAPPLER_A")
-									PedSetHealth(ped, fattyHP)
+									--fattyHP = PedGetHealth(ped)
+									--PedSetStatsType(ped, "STAT_J_GRAPPLER_A")
+									--PedSetHealth(ped, fattyHP)
 									PedSetActionTree(ped, "/Global/J_Grappler_A", "Act/Anim/J_Grappler_A.act")
 								end
 							else
 								if PedMePlaying(ped, "Default_KEY") and not PedIsPlaying(ped, "/Global/N_Striker_A", true) and PedHasWeapon(ped, -1) then
-									fattyHP = PedGetHealth(ped)
-									PedSetStatsType(ped, "STAT_N_STRIKER_A")
-									PedSetHealth(ped, fattyHP)
+									--fattyHP = PedGetHealth(ped)
+									--PedSetStatsType(ped, "STAT_N_STRIKER_A")
+									--PedSetHealth(ped, fattyHP)
 									PedSetActionTree(ped, "/Global/N_Striker_A", "Act/Anim/N_Striker_A.act")
 								end
 							end
 						else
 							if PedMePlaying(ped, "Default_KEY") and not PedIsPlaying(ped, "/Global/N_Striker_A", true) and PedHasWeapon(ped, -1) then
-								fattyHP = PedGetHealth(ped)
-								PedSetStatsType(ped, "STAT_N_STRIKER_A")
-								PedSetHealth(ped, fattyHP)
+								--fattyHP = PedGetHealth(ped)
+								--PedSetStatsType(ped, "STAT_N_STRIKER_A")
+								--PedSetHealth(ped, fattyHP)
 								PedSetActionTree(ped, "/Global/N_Striker_A", "Act/Anim/N_Striker_A.act")
 							end
 						end
